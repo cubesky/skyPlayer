@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>SkyEdge Html5 Player</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/font-awesome-animation.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/sweetalert2.min.css') }}">
+    <script src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.lazyload.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/es6-promise.auto.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/sweetalert2.min.js') }}"></script>
+</head>
+<body>
+    <div class="back">
+      <div class="story" id="story"></div>
+    </div>
+    <div class="container loadani" id="container">
+        <div class="diskplate-down"></div>
+        <svg width="440" height="440" viewbox="0 0 440 440" class="disk-show progress-run">
+            <circle cx="220" cy="220" r="170" stroke-width="5" stroke="#EE0000" fill="none" transform="matrix(0,-1,1,0,0,440)" stroke-dasharray="0 1069" class="cir cirtra" id="disk-show"></circle>
+        </svg>
+        <div class="disk" id="disk"><div class="disk-inside lazy" id="diskimg"></div></div>
+        <div class="title" id="title"></div>
+        <div class="lrc" id="lrc"></div>
+        <div class="control-btn"><i class="fa fa-play fa-2x btn-helper animated-hover faa-pulse" id="control"></i></div>
+        <div class="changeplay-btn"><i class="fa fa-refresh fa-2x btn-helper animated-hover faa-spin" id="changeplay"></i></div>
+        <audio id="players" preload></audio>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script type="text/javascript">
+        /*
+        ++++++++++[>++++++++++[>+>+>+>+>+>+>+>>+>+>>+>+>+>+>+>>+>+>+>+>+>+>+>>>+>+>+>+>+>>>>+>+>+>+>+>>+>+>+>+><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-]>-->+>++>>+>>>+++>-+>++>+++>---+>>++>>+>+++++>-->+>++>----+>>>>+>+>>++>++>+>+>++++++>+++++>+++++>+>>++>>+>+++++>>-+>++>>+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-]>>.>+.>-.>+.>++++.>+.>.>++.>--.>+.>++.>----.>+++++.>+.>+++++.>.>---.>+++.>---.>+.>-.>.>+++.>+.>+++.>.>++++.>----.>----.>++.>+++++.>--.>---.>---.>--.>+++++.>+.>+++++.>.>----.>.>---.>----.>+.>.
+        */
+    </script>
+</body>
+</html>

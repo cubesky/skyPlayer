@@ -1,0 +1,247 @@
+@charset "utf-8";
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.lrc {
+  position:absolute;
+  width: 100%;
+  height: 120px;
+  line-height:120px;
+  background-color: white;
+  opacity: 0.6;
+  margin: 0 auto;
+  color: black;
+  text-align:center;
+  font-size:30px;
+}
+
+.container {
+  width: 100%;
+  background-size: 100% auto;
+  background-repeat: repeat-y;
+  background-attachment: fixed;
+  position: absolute;
+}
+
+.story {
+  position: absolute;
+  right:5%;
+  height: 90vh;
+  width: 50%;
+  padding: 5px;
+  top: 5%;
+  color: white;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+.title {
+  position:absolute;
+  width: 100%;
+  height: 50px;
+  line-height:50px;
+  background-color: white;
+  opacity: 0.6;
+  margin: 0 auto;
+  color: black;
+  text-align:center;
+  font-size:40px;
+  font-weight: bold;
+}
+
+.btn-helper {
+  padding: 10px;
+}
+
+.back {
+  width: 100%;
+  background-size: 100% auto;
+  background-repeat: repeat-y;
+  background-attachment: fixed;
+  position: absolute;
+  top:0px;
+}
+
+.control-btn {
+  position:absolute;
+  width: 50px;
+  height: 50px;
+  opacity: 0.9;
+  left: 30%;
+  color: white;
+  line-height:50px;
+}
+
+.changeplay-btn {
+  position:absolute;
+  width: 50px;
+  height: 50px;
+  opacity: 0.9;
+  right: 30%;
+  color: white;
+  line-height:50px;
+}
+
+.diskplate-down {
+  position:absolute;
+  border-radius:100%;
+  background-color:black;
+  top: 10%;
+}
+
+circle {
+    -webkit-transition: stroke-dasharray .25s;
+    transition: stroke-dasharray .25s;
+}
+
+.disk-show {
+  position:absolute;
+  top: 10%;
+}
+
+.disk {
+  position:absolute;
+  border-radius:95%;
+  background-color:#242424;
+}
+
+.disk-run {
+  animation: route 2s infinite linear;
+}
+
+.progress-run {
+  animation: router 10s infinite linear;
+}
+
+.disk-out {
+  animation: changeOut 2s;
+}
+
+.disk-in {
+  animation: changeIn 2s;
+}
+
+.disk-inside {
+  position:absolute;
+  border-radius:100%;
+  background-color:white;
+  background-size: 100% 100%;
+}
+
+.loadani {
+  animation: loads 2s;
+}
+
+.filp-container {
+  animation: filp 1s;
+}
+
+.after-container {
+  animation: afterfilp 1s infinite;
+}
+
+.return-container {
+  animation: returnfilp 1s;
+}
+
+
+.story::-webkit-scrollbar{
+  width: 7px;
+  height: 7px;
+  border-radius: 4px;
+  background-color: #66CCFF;
+  opacity: 0.4;
+}
+
+.story::-webkit-scrollbar-thumb{
+  width: 7px;
+  height: 7px;
+  border-radius: 4px;
+  background-color: #3366FF;
+  opacity: 0.8;
+}
+
+.story::-webkit-scrollbar-button{
+  display: none;
+}
+
+@keyframes route {
+  from {}
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes router {
+  from {}
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes changeOut {
+  from {}
+  to {
+    transform: translateX(-200px)
+               rotate3d(0,1,0,90deg);
+    opacity: 0;
+  }
+}
+
+@keyframes changeIn {
+  from {
+    transform: translateX(200px)
+               rotate3d(0,1,0,90deg);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes loads {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes filp {
+  from {}
+  to {
+     transform: translateX(-40%)
+               rotateY(360deg)
+               scale(0.6);
+     opacity: 0.7;
+  }
+}
+
+@keyframes afterfilp {
+  from {
+    transform: translateX(-40%)
+               rotateY(360deg)
+               scale(0.6);
+     opacity: 0.7;
+  }
+  to {
+    transform: translateX(-40%)
+               rotateY(360deg)
+               scale(0.6);
+     opacity: 0.7;
+  }
+}
+
+@keyframes returnfilp {
+  from {
+    transform: translateX(-40%)
+               rotateY(360deg)
+               scale(0.6);
+     opacity: 0.7;
+  }
+  to {  }
+}

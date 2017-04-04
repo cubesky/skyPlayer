@@ -1,0 +1,1 @@
+{"title":"病态的我","lyrics":"/static/data/病态的我.music/lrc.txt","music":"/static/data/病态的我.music/music.mp3"}

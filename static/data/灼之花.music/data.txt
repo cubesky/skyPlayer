@@ -1,0 +1,1 @@
+{"title":"灼之花","lyrics":"/static/data/灼之花.music/lrc.txt","img":"/static/data/灼之花.music/img.jpg","music":"/static/data/灼之花.music/music.mp3"}

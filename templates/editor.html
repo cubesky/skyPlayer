@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>SkyEdge Html5 Player SkyLyrics Editor</title>
+    <script src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+</head>
+<body>
+    <audio id="players" src="{{ musicfile }}" controls></audio>
+    <span id="nowtimes"></span>
+    <br>
+    <textarea id="rawlrc" rows="50" cols="50"></textarea>
+    <textarea id="lrc" rows="50" cols="50"></textarea>
+    <button id="btn">添加时间戳</button>
+    <br>
+    <button id="finish">创建 SkyLyrics</button>
+    <button id="reset">重置</button>
+    <script type="text/javascript">
+        var time=0;
+        $('#nowtimes').text('当前时间戳: ' + time);
+        $('#btn').click(function(){
+           var now=$('#players')[0].currentTime.toFixed(4);
+           $('#lrc').val($('#lrc').val()+',\"'+ now +'\":\"'+$('#rawlrc').val().split('\n')[time]+'\"');
+           time++;
+           $('#nowtimes').text('当前时间戳: ' + time);
+        });
+        $('#finish').click(function(){
+           var lrc=$('#lrc').val();
+           if(lrc.startsWith(',')){
+              lrc=lrc.substring(1,lrc.length);
+              lrc='{' + lrc + '}';
+              $('#lrc').val(lrc);
+           }
+        });
+        $('#reset').click(function(){
+           $('#lrc').val('');
+           time=0;
+           $('#players')[0].currentTime=0;
+           $('#nowtimes').text('当前时间戳: ' + time);
+        });
+        /*
+        ++++++++++[>++++++++++[>+>+>+>+>+>+>+>>+>+>>+>+>+>+>+>>+>+>+>+>+>+>+>>>+>+>+>+>+>>>>+>+>+>+>+>>+>+>+>+><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-]>-->+>++>>+>>>+++>-+>++>+++>---+>>++>>+>+++++>-->+>++>----+>>>>+>+>>++>++>+>+>++++++>+++++>+++++>+>>++>>+>+++++>>-+>++>>+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-]>>.>+.>-.>+.>++++.>+.>.>++.>--.>+.>++.>----.>+++++.>+.>+++++.>.>---.>+++.>---.>+.>-.>.>+++.>+.>+++.>.>++++.>----.>----.>++.>+++++.>--.>---.>---.>--.>+++++.>+.>+++++.>.>----.>.>---.>----.>+.>.
+        */
+    </script>
+</body>
+</html>

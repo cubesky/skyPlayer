@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Sky Html5 Inline Player</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+       * {
+          margin: 0;
+          padding: 0;
+        }
+        body,html {
+          width: 400px;
+          height: 120px;
+          position: absolute;
+        }
+        main {
+          width: 400px;
+          height: 120px;
+          position: absolute;
+          top:0px;
+          left:0px;
+          background-image: url('/static/img/inline.png');
+          box-shadow: 1px 1px 10px #888888; 
+        }
+        .musicimg {
+          position: absolute;
+          height: 100px;
+          width: 100px;
+          background-size: 100px 100px;
+          left:10px;
+          top: 10px;
+        }
+        .title {
+          position: absolute;
+          height: 50px;
+          width: 250px;
+          left: 130px;
+          top: 15px;
+          margin: 0 auto;
+          color: black;
+          text-align:center;
+          font-size:30px;
+          font-weight: bold;
+        }
+        .controls {
+          position: absolute;
+          height: 30px;
+          width: 30px;
+          left: 180px;
+          top: 75px;
+        }
+        .change {
+          position: absolute;
+          height: 30px;
+          width: 30px;
+          left: 305px;
+          top: 75px;
+        }
+        .btn-helper {
+          padding: 10px;
+          color: black;
+        }
+        img {
+            box-shadow: 1px 1px 10px #888888;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/font-awesome-animation.min.css') }}">
+    <script src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.lazyload.min.js') }}"></script>
+</head>
+<body>
+<main>
+<img class="musicimg" id="musicimg" src="static/img/noimg.png">
+<div class="title" id="title">Loading...</div>
+<div class="controls"><i class="fa fa-play fa-lg btn-helper animated-hover faa-pulse" id="controls"></i></div>
+<div class="change"><i class="fa fa-refresh fa-lg btn-helper animated-hover faa-spin" id="change"></i></div>
+<audio id="players"></audio>
+</main>
+<script type="text/javascript">
+function change(){
+  pause();
+  $('#title').text('Loading....');
+  loaddata();
+}
+
+function loaddata(){
+    $.ajax({
+        url:'/random',
+        cache:false,
+        dataType:'json',
+        success: function(data){
+            $('#players').attr('src',data.music);
+            $('#title').text(data.title);
+            if(data.img === undefined) {
+               $('#musicimg').attr('src','static/img/noimg.png');
+            }else{
+               $('#musicimg').attr('src', data.img);
+            }
+            play();
+        },
+        error: function(){
+            loaddata();
+        }
+    });
+}
+
+function play() {
+  if($('#players').attr('src') === undefined){
+     change();
+  }
+  $('#players')[0].play();
+}
+
+function pause() {
+  $('#players')[0].pause();
+}
+
+$('#change').click(function(){change();});
+
+$('#players').on('ended', function(){change();});
+
+$('#players').on('error', function(){change();});
+
+$('#players').on('play', function(){
+    $('#controls').removeClass('fa-play');
+    $('#controls').addClass('fa-pause');
+});
+
+$('#players').on('pause', function(){
+    $('#controls').removeClass('fa-pause');
+    $('#controls').addClass('fa-play');
+});
+
+$('#controls').click(function(){
+    if($('#players')[0].paused){
+        play();
+    }else{
+        pause();
+    }
+});
+
+$('#change').click(function(){
+    change();
+});
+
+$(document).ready(function(){
+    change();
+});
+
+</script>
+</body>
+</html>
